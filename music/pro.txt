@@ -1,0 +1,7 @@
+---
+title: music
+date: 2025-02-07 12:46:20
+type: "music"
+aplayer: true
+---
+{% meting “772394587” "netease" "playlist" "autoplay" "mutex:false" "listmaxheight:400px" "preload:none" "theme:#ad7a86"%}
