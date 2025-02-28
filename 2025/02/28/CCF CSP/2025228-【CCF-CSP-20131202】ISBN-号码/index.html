@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>【CCF CSP-20131202】ISBN 号码 | 趁年轻</title><meta name="author" content="C x l"><meta name="copyright" content="C x l"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【CCF CSP-20131202】ISBN 号码题意概述每一本正式出版的图书都有一个 ISBN 号码与之对应，ISBN 码包括 9 位数字、1 位识别码和 3 位分隔符，其规定格式如x-xxx-xxxxx-x，其中符号-是分隔符（键盘上的减号），最后一位是识别码。识别码的计算方法如下： 首位数字乘以 1 加上次位数字乘以 2……以此类推，用所得的结果 mod 11，所得的余数即为识别码，如果余数"><meta property="og:type" content="article"><meta property="og:title" content="【CCF CSP-20131202】ISBN 号码"><meta property="og:url" content="https://yishuangrenew.github.io/2025/02/28/CCF%20CSP/2025228-%E3%80%90CCF-CSP-20131202%E3%80%91ISBN-%E5%8F%B7%E7%A0%81/index.html"><meta property="og:site_name" content="趁年轻"><meta property="og:description" content="【CCF CSP-20131202】ISBN 号码题意概述每一本正式出版的图书都有一个 ISBN 号码与之对应，ISBN 码包括 9 位数字、1 位识别码和 3 位分隔符，其规定格式如x-xxx-xxxxx-x，其中符号-是分隔符（键盘上的减号），最后一位是识别码。识别码的计算方法如下： 首位数字乘以 1 加上次位数字乘以 2……以此类推，用所得的结果 mod 11，所得的余数即为识别码，如果余数"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://yishuangrenew.github.io/img/avatar.png"><meta property="article:published_time" content="2025-02-27T16:00:00.000Z"><meta property="article:modified_time" content="2025-02-28T12:45:36.259Z"><meta property="article:author" content="C x l"><meta property="article:tag" content="CCF CSP"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://yishuangrenew.github.io/img/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【CCF CSP-20131202】ISBN 号码",
+  "url": "https://yishuangrenew.github.io/2025/02/28/CCF%20CSP/2025228-%E3%80%90CCF-CSP-20131202%E3%80%91ISBN-%E5%8F%B7%E7%A0%81/",
+  "image": "https://yishuangrenew.github.io/img/avatar.png",
+  "datePublished": "2025-02-27T16:00:00.000Z",
+  "dateModified": "2025-02-28T12:45:36.259Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "C x l",
+      "url": "https://yishuangrenew.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon_my.ico"><link rel="canonical" href="https://yishuangrenew.github.io/2025/02/28/CCF%20CSP/2025228-%E3%80%90CCF-CSP-20131202%E3%80%91ISBN-%E5%8F%B7%E7%A0%81/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>(() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: '[object Object]',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"【CCF CSP-20131202】ISBN 号码",isHighlightShrink:!1,isToc:!0,pageType:"post"}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image:url(/img/default_top_img.png)"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/nav_logo.png" alt="Logo"><span class="site-name">趁年轻</span></a><a class="nav-page-title" href="/"><span class="site-name">【CCF CSP-20131202】ISBN 号码</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">【CCF CSP-20131202】ISBN 号码</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-27T16:00:00.000Z" title="发表于 2025-02-28 00:00:00">2025-02-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-28T12:45:36.259Z" title="更新于 2025-02-28 20:45:36">2025-02-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CCF-CSP/">CCF CSP</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="【CCF-CSP-20131202】ISBN-号码"><a href="#【CCF-CSP-20131202】ISBN-号码" class="headerlink" title="【CCF CSP-20131202】ISBN 号码"></a>【CCF CSP-20131202】ISBN 号码</h1><h2 id="题意概述"><a href="#题意概述" class="headerlink" title="题意概述"></a>题意概述</h2><p>每一本正式出版的图书都有一个 ISBN 号码与之对应，ISBN 码包括 9 位数字、1 位识别码和 3 位分隔符，其规定格式如<code>x-xxx-xxxxx-x</code>，其中符号<code>-</code>是分隔符（键盘上的减号），最后一位是识别码。识别码的计算方法如下：</p><p>首位数字乘以 1 加上次位数字乘以 2……以此类推，用所得的结果 mod 11，所得的余数即为识别码，如果余数为 10，则识别码为大写字母 X。例如 ISBN 号码 0-670-82162-4 中的识别码 4 是这样得到的：对 067082162 这 9 个数字，从左至右，分别乘以 1，2，…，9，再求和，即 0×1+6×2+……+2×9&#x3D;158，然后取 158 mod 11 的结果 4 作为识别码。</p><p>编写程序判断输入的 ISBN 号码中识别码是否正确，如果正确，则仅输出<code>Right</code>；如果错误，则输出是正确的 ISBN 号码。</p><h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p>输入只有一行，是一个字符序列，表示一本书的 ISBN 号码（保证输入符合 ISBN 号码的格式要求）。</p><p>输出一行，假如输入的 ISBN 号码的识别码正确，那么输出<code>Right</code>，否则，按照规定的格式，输出正确的 ISBN 号码（包括分隔符<code>-</code>）。</p><h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><p>​	2025年2月28日20:37:09</p><h2 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h2><h4 id="C-代码1："><a href="#C-代码1：" class="headerlink" title="C++代码1："></a>C++代码1：</h4><p>算法思路：观察ISBN手动模拟。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误代码：</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    string num;</span><br><span class="line">    cin&gt;&gt;num;</span><br><span class="line">    <span class="comment">// x-xxx-xxxxx-x</span></span><br><span class="line">    <span class="comment">// 0-234-678910-12</span></span><br><span class="line">    <span class="type">int</span> x = <span class="number">1</span> * (num[<span class="number">0</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第1位字符转数字</span></span><br><span class="line">      + <span class="number">2</span> * (num[<span class="number">2</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第3位字符转数字</span></span><br><span class="line">      + <span class="number">3</span> * (num[<span class="number">3</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第4位字符转数字</span></span><br><span class="line">      + <span class="number">4</span> * (num[<span class="number">4</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第5位字符转数字</span></span><br><span class="line">      + <span class="number">5</span> * (num[<span class="number">6</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第7位字符转数字</span></span><br><span class="line">      + <span class="number">6</span> * (num[<span class="number">7</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第8位字符转数字</span></span><br><span class="line">      + <span class="number">7</span> * (num[<span class="number">8</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第9位字符转数字</span></span><br><span class="line">      + <span class="number">8</span> * (num[<span class="number">9</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第10位字符转数字</span></span><br><span class="line">      + <span class="number">9</span> * (num[<span class="number">10</span>] - <span class="string">&#x27;0&#x27;</span>); <span class="comment">// 第11位字符转数字</span></span><br><span class="line">	x%=<span class="number">11</span>;</span><br><span class="line">    <span class="keyword">if</span>(x==num[<span class="number">12</span>]-<span class="string">&#x27;0&#x27;</span>)  <span class="comment">// 这里有问题！没有检查X。</span></span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;Right&quot;</span>;</span><br><span class="line">   	<span class="keyword">else</span>&#123;</span><br><span class="line">		num[<span class="number">12</span>]=x==<span class="number">10</span>?<span class="string">&#x27;X&#x27;</span>:x+<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        cout&lt;&lt;num;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正确代码</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span> <span class="comment">// 必须包含string头文件以使用string类型</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    string num;</span><br><span class="line">    cin &gt;&gt; num;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 计算ISBN加权和（格式：x-xxx-xxxxx-x）</span></span><br><span class="line">    <span class="type">int</span> x = <span class="number">1</span> * (num[<span class="number">0</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第1位数字（索引0）</span></span><br><span class="line">          + <span class="number">2</span> * (num[<span class="number">2</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第2组第1数字（索引2）</span></span><br><span class="line">          + <span class="number">3</span> * (num[<span class="number">3</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第2组第2数字（索引3）</span></span><br><span class="line">          + <span class="number">4</span> * (num[<span class="number">4</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第2组第3数字（索引4）</span></span><br><span class="line">          + <span class="number">5</span> * (num[<span class="number">6</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第3组第1数字（索引6）</span></span><br><span class="line">          + <span class="number">6</span> * (num[<span class="number">7</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第3组第2数字（索引7）</span></span><br><span class="line">          + <span class="number">7</span> * (num[<span class="number">8</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第3组第3数字（索引8）</span></span><br><span class="line">          + <span class="number">8</span> * (num[<span class="number">9</span>] - <span class="string">&#x27;0&#x27;</span>)   <span class="comment">// 第3组第4数字（索引9）</span></span><br><span class="line">          + <span class="number">9</span> * (num[<span class="number">10</span>] - <span class="string">&#x27;0&#x27;</span>); <span class="comment">// 第3组第5数字（索引10）</span></span><br><span class="line">    x %= <span class="number">11</span>; <span class="comment">// 取模11得到校验值</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解析原始校验码（需处理&#x27;X&#x27;情况）</span></span><br><span class="line">    <span class="type">char</span> original = num[<span class="number">12</span>];</span><br><span class="line">    <span class="type">int</span> check = (original == <span class="string">&#x27;X&#x27;</span> || original == <span class="string">&#x27;x&#x27;</span>) ? <span class="number">10</span> : original - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 校验并输出结果</span></span><br><span class="line">    <span class="keyword">if</span> (x == check) &#123; <span class="comment">// 校验通过</span></span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Right&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; <span class="comment">// 校验不通过</span></span><br><span class="line">        num[<span class="number">12</span>] = (x == <span class="number">10</span>) ? <span class="string">&#x27;X&#x27;</span> : x + <span class="string">&#x27;0&#x27;</span>; <span class="comment">// 生成正确校验码</span></span><br><span class="line">        cout &lt;&lt; num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="C-代码2："><a href="#C-代码2：" class="headerlink" title="C++代码2："></a>C++代码2：</h4><p>算法思路：</p><ol><li><strong>ISBN校验算法实现</strong><br>实现典型ISBN-10校验码计算规则：加权系数从1递增，模11校验</li><li><strong>智能字符处理</strong><ul><li><code>si[i] - &#39;0&#39;</code> 实现字符数字到整型转换</li><li><code>sum % 11 + &#39;0&#39;</code> 反向转换时自动处理ASCII映射</li></ul></li><li><strong>边界处理优化</strong><br>循环条件 <code>i &lt; si.size() - 1</code> 跳过最后一位校验码</li><li><strong>内存效率</strong></li></ol><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span>  <span class="comment">// 包含所有标准库头文件（竞赛编程常用写法）</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll = <span class="type">long</span> <span class="type">long</span>;  <span class="comment">// 定义长整型别名，便于处理大数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 优化输入输出速度（关闭与C标准库的同步）</span></span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    string si;      <span class="comment">// 存储输入的字符串（如ISBN号码）</span></span><br><span class="line">    cin &gt;&gt; si;      <span class="comment">// 读取输入</span></span><br><span class="line">    </span><br><span class="line">    ll num = <span class="number">1</span>;     <span class="comment">// 权重计数器，从1开始递增</span></span><br><span class="line">    ll sum = <span class="number">0</span>;     <span class="comment">// 加权求和结果</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 遍历字符串前n-1个字符（假设最后一位是校验码）</span></span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">0</span>; i &lt; si.<span class="built_in">size</span>() - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isdigit</span>(si[i])) &#123;  <span class="comment">// 只处理数字字符</span></span><br><span class="line">            <span class="comment">// 累加：数字值 × 当前权重，权重递增</span></span><br><span class="line">            sum += (si[i] - <span class="string">&#x27;0&#x27;</span>) * (num++);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 计算校验码：当余数为10时用&#x27;X&#x27;表示，否则转成字符数字</span></span><br><span class="line">    <span class="type">char</span> c = sum % <span class="number">11</span> == <span class="number">10</span> ? <span class="string">&#x27;X&#x27;</span> : sum % <span class="number">11</span> + <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 校验判断</span></span><br><span class="line">    <span class="keyword">if</span> (si.<span class="built_in">back</span>() == c) &#123;       <span class="comment">// 校验码正确</span></span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Right\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;                    <span class="comment">// 校验码错误</span></span><br><span class="line">        si.<span class="built_in">back</span>() = c;          <span class="comment">// 替换为正确校验码</span></span><br><span class="line">        cout &lt;&lt; si;             <span class="comment">// 输出修正后的完整字符串</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yishuangrenew.github.io">C x l</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yishuangrenew.github.io/2025/02/28/CCF%20CSP/2025228-%E3%80%90CCF-CSP-20131202%E3%80%91ISBN-%E5%8F%B7%E7%A0%81/">https://yishuangrenew.github.io/2025/02/28/CCF%20CSP/2025228-%E3%80%90CCF-CSP-20131202%E3%80%91ISBN-%E5%8F%B7%E7%A0%81/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yishuangrenew.github.io" target="_blank">趁年轻</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CCF-CSP/">CCF CSP</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/02/28/CCF%20CSP/%E3%80%90CCF%20CSP-20131201%E3%80%91%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E6%9C%80%E5%A4%9A%E7%9A%84%E6%95%B0/" title="【CCF CSP-20131201】出现次数最多的数"><div class="cover" style="background:var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-28</div><div class="info-item-2">【CCF CSP-20131201】出现次数最多的数</div></div><div class="info-2"><div class="info-item-1">【CCF CSP-20131201】出现次数最多的数题意概述给定 n 个正整数，找出它们中出现次数最多的数。如果这样的数有多个，请输出其中最小的一个。 输入输出格式输入的第一行只有一个正整数 n，表示数字的个数。输入的第二行有 n 个整数$a_1,a_2,\cdots,a_n$。相邻的数用空格分隔。 输出这 n 个次数中出现次数最多的数。如果这样的数有多个，输出其中最小的一个。 数据规模$$1\le n\le1000,1\le a_i\le10000$$ 算法设计法1：使用桶来计数，计数过程中同步更新 法2：可以使用 map 来存储数字及其对应的出现次数，然后使用 max_element 函数统计出现次数最多的数字即可。 时间​	2025年2月28日20:02:00 C++代码C++法1：1234567891011121314151617181920#include&lt;cstdio&gt;int main()&#123;	int n;	scanf(&quot;%d&quot;,&amp;n);	int cnt[10001]=&#123;&#125;;	int...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="author-info-name">C x l</div><div class="author-info-description">低语中果决，成功时清醒</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yishuangrenew"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yishuangrenew" target="_blank" title="Github"><i class="fab fa-github" style="color:#24292e"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color:#4a7dbe"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎进行算法、技术交流</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90CCF-CSP-20131202%E3%80%91ISBN-%E5%8F%B7%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">【CCF CSP-20131202】ISBN 号码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E6%84%8F%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">题意概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">输入输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4"><span class="toc-number">1.3.</span> <span class="toc-text">时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E4%BB%A3%E7%A0%81"><span class="toc-number">1.4.</span> <span class="toc-text">C++代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C-%E4%BB%A3%E7%A0%811%EF%BC%9A"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">C++代码1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-%E4%BB%A3%E7%A0%812%EF%BC%9A"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">C++代码2：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/28/CCF%20CSP/2025228-%E3%80%90CCF-CSP-20131202%E3%80%91ISBN-%E5%8F%B7%E7%A0%81/" title="【CCF CSP-20131202】ISBN 号码">【CCF CSP-20131202】ISBN 号码</a><time datetime="2025-02-27T16:00:00.000Z" title="发表于 2025-02-28 00:00:00">2025-02-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/28/CCF%20CSP/%E3%80%90CCF%20CSP-20131201%E3%80%91%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E6%9C%80%E5%A4%9A%E7%9A%84%E6%95%B0/" title="【CCF CSP-20131201】出现次数最多的数">【CCF CSP-20131201】出现次数最多的数</a><time datetime="2025-02-27T16:00:00.000Z" title="发表于 2025-02-28 00:00:00">2025-02-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/27/touchstone_20250227/" title="touchstone_2025/02/27">touchstone_2025/02/27</a><time datetime="2025-02-26T16:00:00.000Z" title="发表于 2025-02-27 00:00:00">2025-02-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/07/2025-2-7-01/" title="2025/2/7-01">2025/2/7-01</a><time datetime="2025-02-07T14:25:52.000Z" title="发表于 2025-02-07 22:25:52">2025-02-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/06/hello-world/" title="Hello World 2025年2月7日18:05:38"><img src="/img/background.png" onerror='this.onerror=null,this.src="/img/404.jpg"' alt="Hello World 2025年2月7日18:05:38"></a><div class="content"><a class="title" href="/2025/02/06/hello-world/" title="Hello World 2025年2月7日18:05:38">Hello World 2025年2月7日18:05:38</a><time datetime="2025-02-06T12:25:23.676Z" title="发表于 2025-02-06 20:25:23">2025-02-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By C x l</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="772394587" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-lrctype="-1"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful=!0,POWERMODE.shake=!0,POWERMODE.mobile=!1,document.body.addEventListener("input",POWERMODE)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      pjax.loadUrl('/404.html')
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
